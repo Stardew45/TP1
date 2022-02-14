@@ -40,7 +40,21 @@ void draw()
   else 
   {
     //L'écran principale de la petite sirène
-    background (255);
+    background (#CCFFF5);
+    fill(#9CC3FA);
+    rect(0,16,500,4);
+    rect(0,480,500,4);
+    fill(#6C88FF);
+    rect(0,0,500,16);
+    rect(0,484,500,16);
+    rect(0,20,500,8);
+    rect(0, 472, 500, 8);
+    rect(0,30,500,2);
+    rect(0,468,500,2);
+    rect(0,34,500,2);
+    rect(0,464,500,2);
+    
+    
   }
 }
 
