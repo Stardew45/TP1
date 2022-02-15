@@ -1,10 +1,16 @@
 //La petite sirène
 
 boolean titlescreenclicked = false;
+PImage fish;
+int positionFishX = 30;
+int positionFishY = 60;
+int speed = 16;
 
 void setup() 
 {
   size(500, 500);
+  fish = loadImage ("fish.png");
+  frameRate (60);
 }
 
 void draw() 
@@ -39,8 +45,11 @@ void draw()
   }
   else 
   {
-    //L'écran principale de la petite sirène
+    //--------------------------------------------------------------------------------------/
+    //L'écran principale de la petite sirène                                               /
+    //------------------------------------------------------------------------------------/
     background (#CCFFF5);
+    image(fish, positionFishX, positionFishY);
     fill(#9CC3FA);
     rect(0,16,500,4);
     rect(0,480,500,4);
@@ -61,6 +70,26 @@ void draw()
 void mouseReleased() 
 {
   titlescreenclicked = true;
+}
+
+void keyPressed()
+{
+ if (keyCode == RIGHT)
+ {
+   positionFishX = positionFishX+speed;
+ }
+ if (keyCode == DOWN)
+ {
+   positionFishY = positionFishY+speed;
+ }
+ if (keyCode == UP)
+ {
+   positionFishY = positionFishY-speed;
+ }
+  if (keyCode == LEFT)
+ {
+   positionFishX = positionFishX-speed;
+ }
 }
 
 //TC 3.2
