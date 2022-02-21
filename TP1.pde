@@ -4,20 +4,22 @@ boolean titlescreenclicked = false;
 PImage fish;
 int positionFishX = 30;
 int positionFishY = 60;
-int fishSpeed = 16;
+int fishSpeed = 16; //init eve
 
 void setup() 
 {
   size(500, 500);
   fish = loadImage ("fish.png");
   frameRate (60);
-}
+} //init eve
 
 void draw() 
 {
   if (titlescreenclicked == false) 
   {
-    // L'écran titre de la petite sirène
+    //--------------------------------------------------------------------------------------/
+    //  L'écran titre de la petite sirène                                                  /
+    //------------------------------------------------------------------------------------/
     noStroke();
     fill(0);
     rect(0, 0, 500, 500);
@@ -42,11 +44,13 @@ void draw()
     text("Elena de Palma", 250, 330);
     text("et", 250, 355);
     text("Eve Desmeules", 250, 380);
+    //init eve
+
   }
   else 
   {
     //--------------------------------------------------------------------------------------/
-    //L'écran principale de la petite sirène                                               /
+    //  L'écran principale de la petite sirène                                             /
     //------------------------------------------------------------------------------------/
     background (#CCFFF5);
     image(fish, positionFishX, positionFishY);
@@ -65,14 +69,16 @@ void draw()
     fill(255);
     circle(140, 340, 160);
     triangle(290, 320, 370, 260, 450, 320);
-    quad(290, 320, 325, 410, 415, 410, 450, 320);
+    quad(290, 320, 325, 410, 415, 410, 450, 320); //init eve
+
   }
-}
+} //init eve
 
 void mouseReleased() 
 {
   titlescreenclicked = true;
-}
+} //init eve
+
 
 void keyPressed()
 {
@@ -92,4 +98,4 @@ void keyPressed()
  {
    positionFishX = positionFishX-fishSpeed;
  }
-}
+} //init eve
