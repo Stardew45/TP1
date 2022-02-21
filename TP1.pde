@@ -54,10 +54,10 @@ void draw()
     //------------------------------------------------------------------------------------/
     background (#CCFFF5);
     image(fish, positionFishX, positionFishY);
-    fill(#9CC3FA);
+    fill(#7DD4CB);
     rect(0,16,500,4);
     rect(0,480,500,4);
-    fill(#6C88FF);
+    fill(#2DA9A2);
     rect(0,0,500,16);
     rect(0,484,500,16);
     rect(0,20,500,8);
