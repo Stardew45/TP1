@@ -2,6 +2,8 @@
 
 boolean titlescreenclicked = false;
 PImage fish;
+PImage maison;
+PImage sacoche;
 int positionFishX = 30;
 int positionFishY = 60;
 int fishSpeed = 32; //init eve
@@ -10,6 +12,8 @@ void setup()
 {
   size(500, 500);
   fish = loadImage ("fish.png");
+  maison = loadImage("maison.png");
+  sacoche = loadImage("sacoche.png");
   frameRate (60);
 } //init eve
 
@@ -20,7 +24,7 @@ void draw()
     //--------------------------------------------------------------------------------------/
     //  L'écran titre de la petite sirène                                                  /
     //------------------------------------------------------------------------------------/
-    noStroke();
+    
     fill(0);
     rect(0, 0, 500, 500);
 
@@ -43,8 +47,7 @@ void draw()
     textSize(25);
     text("Elena de Palma", 250, 330);
     text("et", 250, 355);
-    text("Eve Desmeules", 250, 380);
-    //init eve
+    text("Eve Desmeules", 250, 380); //init eve
 
   }
   else 
@@ -54,6 +57,10 @@ void draw()
     //------------------------------------------------------------------------------------/
     background (#CCFFF5);
     image(fish, positionFishX, positionFishY);
+    stroke(#2DA9A2);
+    strokeWeight(2);
+    arc(60, 263, 12, 14, PI, TWO_PI);
+    noStroke();
     fill(#7DD4CB);
     rect(0,16,500,4);
     rect(0,480,500,4);
@@ -67,10 +74,12 @@ void draw()
     rect(0,34,500,2);
     rect(0,464,500,2);
     fill(255);
-    circle(140, 340, 160);
+    circle(140, 340, 150);
     triangle(290, 320, 370, 260, 450, 320);
-    quad(290, 320, 325, 410, 415, 410, 450, 320); //init eve
-
+    quad(290, 320, 325, 410, 415, 410, 450, 320);
+    noFill();
+    image(maison, 295, 260);
+    image(sacoche, 50, 265); //init eve 
   }
 } //init eve
 
