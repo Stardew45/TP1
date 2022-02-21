@@ -4,7 +4,7 @@ boolean titlescreenclicked = false;
 PImage fish;
 int positionFishX = 30;
 int positionFishY = 60;
-int fishSpeed = 16; //init eve
+int fishSpeed = 32; //init eve
 
 void setup() 
 {
