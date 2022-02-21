@@ -4,6 +4,7 @@ boolean titlescreenclicked = false;
 PImage fish;
 PImage maison;
 PImage sacoche;
+PImage sirene1;
 int positionFishX = 30;
 int positionFishY = 60;
 int fishSpeed = 32; //init eve
@@ -14,6 +15,7 @@ void setup()
   fish = loadImage ("fish.png");
   maison = loadImage("maison.png");
   sacoche = loadImage("sacoche.png");
+  sirene1 = loadImage("sirene1.png");
   frameRate (60);
 } //init eve
 
@@ -79,7 +81,15 @@ void draw()
     quad(290, 320, 325, 410, 415, 410, 450, 320);
     noFill();
     image(maison, 295, 260);
-    image(sacoche, 50, 265); //init eve 
+    image(sacoche, 50, 265); //init eve
+    image(sirene1, 50, 47); 
+    
+    PFont pp;
+    pp = createFont("PublicSans.ttf", 100);
+    textFont(pp);
+    fill(45, 169, 162);
+    textSize(11);
+    text("HAPPINESS", 270, 170);
   }
 } //init eve
 
