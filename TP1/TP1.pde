@@ -83,6 +83,8 @@ void draw()
     image(maison, 295, 260);
     image(sacoche, 50, 265); //init eve
     image(sirene1, 50, 47); 
+    fill (#2DA9A2);
+    rect (343, 138, 85, 5);
     
     PFont pp;
     pp = createFont("PublicSans.ttf", 100);
@@ -90,8 +92,14 @@ void draw()
     fill(45, 169, 162);
     textSize(11);
     text("HAPPINESS", 270, 170);
+    //--------------------------------------------------------------------------------------/
+    //  Slider                                             /
+    //------------------------------------------------------------------------------------/
+    
   }
 } //init eve
+
+
 
 void mouseReleased() 
 {
