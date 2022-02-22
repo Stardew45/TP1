@@ -1,5 +1,14 @@
 //La petite sirène
 
+// slider
+float slider_width = 8;
+float slider_height = 20;
+float sliderx, slidery;
+boolean over = false;
+boolean locked = false;
+float xoff;
+    
+// reste
 boolean titlescreenclicked = false;
 PImage fish;
 PImage maison;
@@ -8,7 +17,7 @@ PImage sirene1;
 int positionFishX = 30;
 int positionFishY = 60;
 int fishSpeed = 32; //init eve
-
+    
 void setup() 
 {
   size(500, 500);
@@ -54,10 +63,12 @@ void draw()
   }
   else 
   {
-    //--------------------------------------------------------------------------------------/
+
+    background (#CCFFF5);
+ 
+     //-----------------------------------------------------------------------------------/
     //  L'écran principale de la petite sirène                                             /
     //------------------------------------------------------------------------------------/
-    background (#CCFFF5);
     image(fish, positionFishX, positionFishY);
     stroke(#2DA9A2);
     strokeWeight(2);
@@ -83,27 +94,62 @@ void draw()
     image(maison, 295, 260);
     image(sacoche, 50, 265); //init eve
     image(sirene1, 50, 47); 
-    fill (#2DA9A2);
-    rect (343, 138, 85, 5);
+    fill (#7BD5F3);
+    strokeWeight(1);
+    stroke(#2DA9A2);
+    rect (338, 169, 120, 5);
     
     PFont pp;
     pp = createFont("PublicSans.ttf", 100);
     textFont(pp);
     fill(45, 169, 162);
     textSize(11);
-    text("HAPPINESS", 270, 170);
+    text("HAPPINESS", 298, 170);
+    
     //--------------------------------------------------------------------------------------/
     //  Slider                                             /
     //------------------------------------------------------------------------------------/
     
+    {
+    
+    println (sliderx);
+  if (dist(mouseX, mouseY, sliderx, slidery) < slider_height) {
+    over = true;
   }
-} //init eve
+ 
+if (sliderx < 340) {
+sliderx = 340;
+}
 
+if (sliderx > 448) {
+sliderx = 448;
+}
+ slidery = 161;
+ rect(sliderx, slidery, slider_width, slider_height);
+  }
+  }
+}
+
+
+void mousePressed() {
+   if (over) {
+    locked = true;
+    xoff = mouseX-sliderx;
+  }
+}
+
+
+void mouseDragged() {
+  if (locked) {
+    sliderx = mouseX-xoff;
+  }
+}
 
 
 void mouseReleased() 
 {
   titlescreenclicked = true;
+  locked = false;
 } //init eve
 
 
