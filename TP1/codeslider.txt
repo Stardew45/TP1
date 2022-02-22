@@ -7,9 +7,6 @@ float sliderx, slidery;
 boolean over = false;
 boolean locked = false;
 float xoff;
-
-//sirene sourir
-
     
 // reste
 boolean titlescreenclicked = false;
@@ -17,9 +14,6 @@ PImage fish;
 PImage maison;
 PImage sacoche;
 PImage sirene1;
-PImage sirene2;
-PImage sirene3;
-PImage pixelheart;
 int positionFishX = 30;
 int positionFishY = 60;
 int fishSpeed = 32; //init eve
@@ -31,9 +25,6 @@ void setup()
   maison = loadImage("maison.png");
   sacoche = loadImage("sacoche.png");
   sirene1 = loadImage("sirene1.png");
-  sirene2 = loadImage("sirene2.png");
-  sirene3 = loadImage("sirene3.png");
-  pixelheart = loadImage("pixelheart.png");
   frameRate (60);
 } //init eve
 
@@ -102,10 +93,7 @@ void draw()
     noFill();
     image(maison, 295, 260);
     image(sacoche, 50, 265); //init eve
-    image(sirene1, 68, 49);
-    image(sirene2, 68, 49);
-    image(sirene3, 68, 49);
-    image(pixelheart, 265, 135, 20, 20);
+    image(sirene1, 50, 47); 
     fill (#7BD5F3);
     strokeWeight(1);
     stroke(#2DA9A2);
@@ -154,16 +142,8 @@ void mousePressed() {
 void mouseDragged() {
   if (locked) {
     sliderx = mouseX-xoff;
-  } 
-  
-  // slider sourire sirene..
-  if (( mouseX > 340 && mouseX < 363) && (mouseY > 161 && mouseY < 161)) {
-  image (sirene1, 68, 49); 
   }
-  else if (( mouseX > 364 && mouseX < 412 ) && ( mouseY > 161 && mouseY < 161)) {
-  image (sirene2, 68, 49);
-  }
-}//ele slider sourire sirene ...
+}
 
 
 void mouseReleased() 
