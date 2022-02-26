@@ -8,6 +8,12 @@ boolean over = false;
 boolean locked = false;
 float xoff;
 
+// bouton lvl 
+int minimumValue = 0;
+int interval = 1;
+int maximumValue = 200;
+int currentValue = 0;
+
 //sirene sourir
 boolean showimage1 = false;
 boolean showimage2 = false;
@@ -104,10 +110,16 @@ void draw()
     noFill();
     image(maison, 295, 260);
     image(sacoche, 50, 265); //init eve
+    
     image(sirene1, 68, 49);
     image(sirene2, 68, 49);
     image(sirene3, 68, 49);
-    image(pixelheart, 265, 135, 20, 20);
+    image(pixelheart, 275, 135, 20, 20);
+    image(pixelheart, 305, 135, 20, 20);
+    image(pixelheart, 335, 135, 20, 20);
+    image(pixelheart, 365, 135, 20, 20);
+    image(pixelheart, 395, 135, 20, 20);
+    image(pixelheart, 425, 135, 20, 20);
     fill (#7BD5F3);
     strokeWeight(1);
     stroke(#2DA9A2);
@@ -119,8 +131,22 @@ void draw()
     fill(45, 169, 162);
     textSize(11);
     text("HAPPINESS", 298, 170);
+    fill(45, 169, 162);
+    textSize(20);
+    text("LVL", 298, 110);
+    
+    // ------------------------------------------------
+    //  Bouton lvl
+    // -------------------------------------------------
     
 
+    
+    
+    
+    
+    //--------------------------------------------------------------------------------------/
+    //  Slider sourir sirene                                             /
+    //------------------------------------------------------------------------------------/
     if(showimage3) image(sirene3, 68, 49);
     if(showimage2) image(sirene2, 68, 49);
     if(showimage1) image(sirene1, 68, 49);
@@ -162,7 +188,7 @@ void mouseDragged() {
   if (locked) {
     sliderx = mouseX-xoff;
     }
-    // slider sourire sirene
+    // -------   slider sourire sirene -------------- //
     if (sliderx > 340 && sliderx < 363) {
   showimage3 = true;
   showimage1 = false;
