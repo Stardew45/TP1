@@ -104,9 +104,9 @@ void draw()
     noFill();
     image(maison, 295, 260);
     image(sacoche, 50, 265); //init eve
-    image(sirene3, 68, 49);
-    image(sirene2, 68, 49);
     image(sirene1, 68, 49);
+    image(sirene2, 68, 49);
+    image(sirene3, 68, 49);
     image(pixelheart, 265, 135, 20, 20);
     fill (#7BD5F3);
     strokeWeight(1);
