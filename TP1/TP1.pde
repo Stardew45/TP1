@@ -9,8 +9,10 @@ boolean locked = false;
 float xoff;
 
 //sirene sourir
+boolean showimage1 = false;
+boolean showimage2 = false;
+boolean showimage3 = false;
 
-    
 // reste
 boolean titlescreenclicked = false;
 PImage fish;
@@ -102,9 +104,9 @@ void draw()
     noFill();
     image(maison, 295, 260);
     image(sacoche, 50, 265); //init eve
-    image(sirene1, 68, 49);
-    image(sirene2, 68, 49);
     image(sirene3, 68, 49);
+    image(sirene2, 68, 49);
+    image(sirene1, 68, 49);
     image(pixelheart, 265, 135, 20, 20);
     fill (#7BD5F3);
     strokeWeight(1);
@@ -118,6 +120,11 @@ void draw()
     textSize(11);
     text("HAPPINESS", 298, 170);
     
+
+    if(showimage3) image(sirene3, 68, 49);
+    if(showimage2) image(sirene2, 68, 49);
+    if(showimage1) image(sirene1, 68, 49);
+
     //--------------------------------------------------------------------------------------/
     //  Slider                                             /
     //------------------------------------------------------------------------------------/
@@ -139,7 +146,7 @@ sliderx = 448;
  slidery = 161;
  rect(sliderx, slidery, slider_width, slider_height);
   }
-  }
+ } 
 }
 
 
@@ -154,16 +161,24 @@ void mousePressed() {
 void mouseDragged() {
   if (locked) {
     sliderx = mouseX-xoff;
-  } 
-  
-  // slider sourire sirene..
-  if (( mouseX > 340 && mouseX < 363) && (mouseY > 161 && mouseY < 161)) {
-  image (sirene1, 68, 49); 
-  }
-  else if (( mouseX > 364 && mouseX < 412 ) && ( mouseY > 161 && mouseY < 161)) {
-  image (sirene2, 68, 49);
-  }
-}//ele slider sourire sirene ...
+    }
+    // slider sourire sirene
+    if (sliderx > 340 && sliderx < 363) {
+  showimage3 = true;
+  showimage1 = false;
+  showimage2 = false;
+   }
+if (sliderx > 364 && sliderx < 412) {
+  showimage2 = true;
+  showimage1 = false;
+  showimage3 = false;
+   }
+if (sliderx > 413 && sliderx < 448) {
+  showimage1 = true;
+  showimage2 = false;
+  showimage3 = false;
+   }  
+} 
 
 
 void mouseReleased() 
