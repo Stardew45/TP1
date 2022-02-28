@@ -1,6 +1,7 @@
 //La petite sirène
 
-// slider
+// Slider
+//Init Elana
 float slider_width = 8;
 float slider_height = 20;
 float sliderx, slidery;
@@ -8,18 +9,20 @@ boolean over = false;
 boolean locked = false;
 float xoff;
 
-// bouton lvl 
+// Bouton lvl 
 int minimumValue = 0;
 int interval = 1;
 int maximumValue = 200;
 int currentValue = 0;
 
-//sirene sourir
+//Sirene sourir
 boolean showimage1 = false;
 boolean showimage2 = false;
 boolean showimage3 = false;
+//Init Elana
 
-// reste
+// Poisson qui bouge, icones & autre
+//Init Eve
 boolean titlescreenclicked = false;
 PImage fish;
 PImage maison;
@@ -30,7 +33,8 @@ PImage sirene3;
 PImage pixelheart;
 int positionFishX = 30;
 int positionFishY = 60;
-int fishSpeed = 32; //init eve
+int fishSpeed = 32; 
+//Init Eve
     
 void setup() 
 {
@@ -38,12 +42,14 @@ void setup()
   fish = loadImage ("fish.png");
   maison = loadImage("maison.png");
   sacoche = loadImage("sacoche.png");
+  frameRate (60);
+  //Init Eve
   sirene1 = loadImage("sirene1.png");
   sirene2 = loadImage("sirene2.png");
   sirene3 = loadImage("sirene3.png");
   pixelheart = loadImage("pixelheart.png");
-  frameRate (60);
-} //init eve
+  //Init Elana
+} 
 
 void draw() 
 {
@@ -75,17 +81,16 @@ void draw()
     textSize(25);
     text("Elena de Palma", 250, 330);
     text("et", 250, 355);
-    text("Eve Desmeules", 250, 380); //init eve
-
+    text("Eve Desmeules", 250, 380); 
+    //Init eve
   }
+  
   else 
   {
-
+    //-----------------------------------------------------------------------------------/
+    //  L'écran principale de la petite sirène                                          /
+    //---------------------------------------------------------------------------------/
     background (#CCFFF5);
- 
-     //-----------------------------------------------------------------------------------/
-    //  L'écran principale de la petite sirène                                             /
-    //------------------------------------------------------------------------------------/
     image(fish, positionFishX, positionFishY);
     stroke(#2DA9A2);
     strokeWeight(2);
@@ -109,7 +114,8 @@ void draw()
     quad(290, 320, 325, 410, 415, 410, 450, 320);
     noFill();
     image(maison, 295, 260);
-    image(sacoche, 50, 265); //init eve
+    image(sacoche, 50, 265);
+    //Init eve
     
     image(sirene1, 68, 49);
     image(sirene2, 68, 49);
@@ -124,6 +130,7 @@ void draw()
     strokeWeight(1);
     stroke(#2DA9A2);
     rect (338, 169, 120, 5);
+    //Init Elana
     
     PFont pp;
     pp = createFont("PublicSans.ttf", 100);
@@ -134,84 +141,98 @@ void draw()
     fill(45, 169, 162);
     textSize(20);
     text("LVL", 298, 110);
+    //Init Elana
     
-    // ------------------------------------------------
-    //  Bouton lvl
-    // -------------------------------------------------
-    
-
-    
-    
-    
+    // ---------------------------------------------------------------------/
+    //  Bouton lvl                                                         /
+    // -------------------------------------------------------------------/
+   
     
     //--------------------------------------------------------------------------------------/
-    //  Slider sourir sirene                                             /
+    //  Slider sourir sirene                                                               /
     //------------------------------------------------------------------------------------/
     if(showimage3) image(sirene3, 68, 49);
     if(showimage2) image(sirene2, 68, 49);
     if(showimage1) image(sirene1, 68, 49);
+    //Init Elana
 
     //--------------------------------------------------------------------------------------/
-    //  Slider                                             /
+    //  Slider                                                                             /
     //------------------------------------------------------------------------------------/
-    
     {
-    
-    println (sliderx);
-  if (dist(mouseX, mouseY, sliderx, slidery) < slider_height) {
-    over = true;
-  }
+      println (sliderx);
+        if (dist(mouseX, mouseY, sliderx, slidery) < slider_height) 
+        {
+          over = true;
+        }
  
-if (sliderx < 340) {
-sliderx = 340;
-}
+        if (sliderx < 340) 
+        {
+          sliderx = 340;
+        }
 
-if (sliderx > 448) {
-sliderx = 448;
-}
- slidery = 161;
- rect(sliderx, slidery, slider_width, slider_height);
-  }
+        if (sliderx > 448) 
+        {
+          sliderx = 448;
+        }
+      slidery = 161;
+      rect(sliderx, slidery, slider_width, slider_height);
+    }
+    //Init Elana
  } 
 }
 
 
-void mousePressed() {
-   if (over) {
+void mousePressed() 
+{
+   if (over) 
+   {
     locked = true;
     xoff = mouseX-sliderx;
-  }
+   }
 }
+//Init Elana
 
+//--------------------------------------------------------------------------------------/
+//  Slider sourir sirene                                                               /
+//------------------------------------------------------------------------------------/
 
-void mouseDragged() {
-  if (locked) {
+void mouseDragged() 
+{
+  if (locked) 
+  {
     sliderx = mouseX-xoff;
-    }
-    // -------   slider sourire sirene -------------- //
-    if (sliderx > 340 && sliderx < 363) {
-  showimage3 = true;
-  showimage1 = false;
-  showimage2 = false;
-   }
-if (sliderx > 364 && sliderx < 412) {
-  showimage2 = true;
-  showimage1 = false;
-  showimage3 = false;
-   }
-if (sliderx > 413 && sliderx < 448) {
-  showimage1 = true;
-  showimage2 = false;
-  showimage3 = false;
-   }  
+  }
+  
+  if (sliderx > 340 && sliderx < 363) 
+  {
+    showimage3 = true;
+    showimage1 = false;
+    showimage2 = false;
+  }
+  
+  if (sliderx > 364 && sliderx < 412) 
+  {
+    showimage2 = true;
+    showimage1 = false;
+    showimage3 = false;
+  }
+  
+  if (sliderx > 413 && sliderx < 448) 
+  {
+    showimage1 = true;
+    showimage2 = false;
+    showimage3 = false;
+  }  
 } 
-
+//Init Elana
 
 void mouseReleased() 
 {
   titlescreenclicked = true;
   locked = false;
-} //init eve
+} 
+//Init Eve
 
 
 void keyPressed()
@@ -232,4 +253,5 @@ void keyPressed()
  {
    positionFishX = positionFishX-fishSpeed;
  }
-} //init eve
+} 
+//Init Eve
