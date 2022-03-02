@@ -92,6 +92,7 @@ void draw()
     //---------------------------------------------------------------------------------/
     background (#CCFFF5);
     image(fish, positionFishX, positionFishY);
+    noFill();
     stroke(#2DA9A2);
     strokeWeight(2);
     arc(60, 263, 12, 14, PI, TWO_PI);
@@ -112,7 +113,6 @@ void draw()
     circle(140, 340, 150);
     triangle(290, 320, 370, 260, 450, 320);
     quad(290, 320, 325, 410, 415, 410, 450, 320);
-    noFill();
     image(maison, 295, 260);
     image(sacoche, 50, 265);
     //Init eve
@@ -142,6 +142,9 @@ void draw()
     textSize(20);
     text("LVL", 298, 110);
     //Init Elana
+    
+    drawRoof();
+    //Init Eve
     
     // ---------------------------------------------------------------------/
     //  Bouton lvl                                                         /
@@ -254,4 +257,12 @@ void keyPressed()
    positionFishX = positionFishX-fishSpeed;
  }
 } 
+//Init Eve
+
+void drawRoof()
+{
+  triangle(290, 320, 370, 260, 450, 320);
+  tint(0, 155, 210);
+  noTint();
+}
 //Init Eve
