@@ -1,7 +1,6 @@
 //La petite sirène
 
 // Slider
-//Init Elana
 float slider_width = 8;
 float slider_height = 20;
 float sliderx, slidery;
@@ -22,7 +21,6 @@ boolean showimage3 = false;
 //Init Elana
 
 // Poisson qui bouge, icones & autre
-//Init Eve
 boolean titlescreenclicked = false;
 PImage fish;
 PImage maison;
@@ -91,7 +89,6 @@ void draw()
     //  L'écran principale de la petite sirène                                          /
     //---------------------------------------------------------------------------------/
     background (#CCFFF5);
-    image(fish, positionFishX, positionFishY);
     noFill();
     stroke(#2DA9A2);
     strokeWeight(2);
@@ -113,6 +110,7 @@ void draw()
     circle(140, 340, 150);
     triangle(290, 320, 370, 260, 450, 320);
     quad(290, 320, 325, 410, 415, 410, 450, 320);
+    blueFish(); 
     image(maison, 295, 260);
     image(sacoche, 50, 265);
     //Init eve
@@ -182,6 +180,12 @@ void draw()
       rect(sliderx, slidery, slider_width, slider_height);
     }
     //Init Elana
+    
+    //--------------------------------------------------------------------------------------/
+    //  Poisson rouge qui bouge                                                            /
+    //------------------------------------------------------------------------------------/
+    image(fish, positionFishX, positionFishY);
+    //Init Eve
  } 
 }
 
@@ -264,5 +268,13 @@ void drawRoof()
   triangle(290, 320, 370, 260, 450, 320);
   tint(0, 155, 210);
   noTint();
+}
+//Init Eve
+
+void blueFish()
+{
+ filter(INVERT);
+ image (fish, 375, 365);
+ filter(INVERT);
 }
 //Init Eve
