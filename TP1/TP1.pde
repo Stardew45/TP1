@@ -13,12 +13,17 @@ int minimumValue = 0;
 int interval = 1;
 int maximumValue = 200;
 int currentValue = 0;
+float x = 357;
+float y = 100;
+float w = 75;
+float h = 22;
+float r = 3;
 
 //Sirene sourir
 boolean showimage1 = false;
 boolean showimage2 = false;
 boolean showimage3 = false;
-//Init Elana
+//Init Elena
 
 // Poisson qui bouge, icones & autre
 boolean titlescreenclicked = false;
@@ -33,6 +38,10 @@ int positionFishX = 30;
 int positionFishY = 60;
 int fishSpeed = 32; 
 //Init Eve
+
+// Poisson rose SPRITE
+
+//Init Elena
     
 void setup() 
 {
@@ -46,7 +55,7 @@ void setup()
   sirene2 = loadImage("sirene2.png");
   sirene3 = loadImage("sirene3.png");
   pixelheart = loadImage("pixelheart.png");
-  //Init Elana
+  //Init Elena
 } 
 
 void draw() 
@@ -108,7 +117,9 @@ void draw()
     rect(0,464,500,2);
     fill(255);
     circle(140, 340, 150);
+    fill(#2DA9A2);
     triangle(290, 320, 370, 260, 450, 320);
+    fill(255);
     quad(290, 320, 325, 410, 415, 410, 450, 320);
     blueFish(); 
     image(maison, 295, 260);
@@ -128,7 +139,11 @@ void draw()
     strokeWeight(1);
     stroke(#2DA9A2);
     rect (338, 169, 120, 5);
-    //Init Elana
+    fill(191, 239, 255);
+    strokeWeight(1.5);
+    stroke(#2DA9A2);
+    rect (x, y, w, h, r);
+    //Init Elena
     
     PFont pp;
     pp = createFont("PublicSans.ttf", 100);
@@ -136,10 +151,12 @@ void draw()
     fill(45, 169, 162);
     textSize(11);
     text("HAPPINESS", 298, 170);
-    fill(45, 169, 162);
     textSize(20);
-    text("LVL", 298, 110);
-    //Init Elana
+    fill(45, 169, 162);
+    text("LV", 298, 110);
+    textSize(15);
+    text("LVL UP", 395, 109);
+    //Init Elena
     
     drawRoof();
     //Init Eve
@@ -147,7 +164,13 @@ void draw()
     // ---------------------------------------------------------------------/
     //  Bouton lvl                                                         /
     // -------------------------------------------------------------------/
-   
+   if(mousePressed){
+   if(mouseX>x && mouseX <x+w && mouseY>y && mouseY <y+h){
+   rect (x, y, w, h, r);
+   fill(#2DA9A2);
+   println("mouse pressed over button");
+     }
+    }
     
     //--------------------------------------------------------------------------------------/
     //  Slider sourir sirene                                                               /
@@ -155,7 +178,7 @@ void draw()
     if(showimage3) image(sirene3, 68, 49);
     if(showimage2) image(sirene2, 68, 49);
     if(showimage1) image(sirene1, 68, 49);
-    //Init Elana
+    //Init Elena
 
     //--------------------------------------------------------------------------------------/
     //  Slider                                                                             /
@@ -179,7 +202,7 @@ void draw()
       slidery = 161;
       rect(sliderx, slidery, slider_width, slider_height);
     }
-    //Init Elana
+    //Init Elena
     
     //--------------------------------------------------------------------------------------/
     //  Poisson rouge qui bouge                                                            /
@@ -198,7 +221,7 @@ void mousePressed()
     xoff = mouseX-sliderx;
    }
 }
-//Init Elana
+//Init Elena
 
 //--------------------------------------------------------------------------------------/
 //  Slider sourir sirene                                                               /
@@ -232,7 +255,7 @@ void mouseDragged()
     showimage3 = false;
   }  
 } 
-//Init Elana
+//Init Elena
 
 void mouseReleased() 
 {
