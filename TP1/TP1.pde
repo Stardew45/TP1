@@ -9,15 +9,19 @@ boolean locked = false;
 float xoff;
 
 // Bouton lvl 
-int minimumValue = 0;
-int interval = 1;
-int maximumValue = 200;
-int currentValue = 0;
-float x = 357;
-float y = 100;
-float w = 75;
-float h = 22;
-float r = 3;
+boolean isButtonPressed;
+boolean isMouseInsideButton;
+float buttonPositionX;
+float buttonPositionY;
+float buttonWidth;
+float buttonHeight;
+float buttonScaleUp;
+float buttonScaleDown;
+float buttonMinX;
+float buttonMinY;
+float buttonMaxX;
+float buttonMaxY;
+int count;
 
 //Sirene sourir
 boolean showimage1 = false;
@@ -40,7 +44,12 @@ int fishSpeed = 32;
 //Init Eve
 
 // Poisson rose SPRITE
-
+String filePrefix = "frame";
+String fileExtension = ".gif";
+int animationFrameCount = 19;
+PImage[] animation;
+String fileName;
+int keyframe;
 //Init Elena
     
 void setup() 
@@ -51,10 +60,36 @@ void setup()
   sacoche = loadImage("sacoche.png");
   frameRate (60);
   //Init Eve
+  
   sirene1 = loadImage("sirene1.png");
   sirene2 = loadImage("sirene2.png");
   sirene3 = loadImage("sirene3.png");
   pixelheart = loadImage("pixelheart.png");
+  strokeWeight(1.5);
+  stroke(#2DA9A2);
+  textSize(20);
+  buttonPositionX = 360;
+  buttonPositionY = 100;
+  buttonWidth = 80;
+  buttonHeight = 20;
+  buttonScaleUp = 1.05f;
+  buttonScaleDown = 0.95f;
+  buttonMinX = buttonPositionX - (buttonWidth );
+  buttonMinY = buttonPositionY - (buttonHeight );
+  buttonMaxX = buttonPositionX + (buttonWidth );
+  buttonMaxY = buttonPositionY + (buttonHeight );
+  isButtonPressed = false;
+  isMouseInsideButton = false;
+  count = 0;
+  // Poisson rose SPRITE
+  frameRate (8);
+  animation = new PImage[animationFrameCount];
+  for (keyframe = 1; keyframe <= animationFrameCount; ++keyframe)
+  {
+    fileName = filePrefix + nf(keyframe, 2) + fileExtension;
+    animation[keyframe - 1] = loadImage(fileName);
+  }
+  keyframe = 0;
   //Init Elena
 } 
 
@@ -142,7 +177,6 @@ void draw()
     fill(191, 239, 255);
     strokeWeight(1.5);
     stroke(#2DA9A2);
-    rect (x, y, w, h, r);
     //Init Elena
     
     PFont pp;
@@ -158,19 +192,47 @@ void draw()
     text("LVL UP", 395, 109);
     //Init Elena
     
+    
     drawRoof();
     //Init Eve
     
     // ---------------------------------------------------------------------/
     //  Bouton lvl                                                         /
     // -------------------------------------------------------------------/
-   if(mousePressed){
-   if(mouseX>x && mouseX <x+w && mouseY>y && mouseY <y+h){
-   rect (x, y, w, h, r);
-   fill(#2DA9A2);
-   println("mouse pressed over button");
-     }
+   if (mouseX >= buttonMinX && mouseX <= buttonMaxX)
+  {
+    if (mouseY >= buttonMinY && mouseY <= buttonMaxY)
+    {
+      isMouseInsideButton = true;
     }
+    else
+      isMouseInsideButton = false;
+  }
+  else
+    isMouseInsideButton = false;
+    
+    if (isButtonPressed == true)
+  {
+    fill(#A5E8FF);
+    rect(buttonPositionX, buttonPositionY, buttonWidth * buttonScaleDown, buttonHeight * buttonScaleDown);
+  }
+  else if (isMouseInsideButton == true) 
+  {
+    fill(#E1F8FF);
+    rect(buttonPositionX, buttonPositionY, buttonWidth * buttonScaleUp, buttonHeight * buttonScaleUp);
+  }
+  else 
+  {
+    fill(#BFEFFF);
+    rect(buttonPositionX, buttonPositionY, buttonWidth, buttonHeight);
+  }
+  fill(45, 169, 162);
+  textSize(15);
+  text("LVL UP", 395, 109);
+  textSize(20);
+   fill(random(255), random(255), random(255));   
+  text(count, 340, 110);
+
     
     //--------------------------------------------------------------------------------------/
     //  Slider sourir sirene                                                               /
@@ -200,10 +262,16 @@ void draw()
           sliderx = 448;
         }
       slidery = 161;
+      fill(#2DA9A2);
       rect(sliderx, slidery, slider_width, slider_height);
     }
     //Init Elena
     
+    // Poisson rose SPRITE
+     keyframe = frameCount % animationFrameCount;
+     image(animation[keyframe], 95, 280);
+    //Init Elena
+
     //--------------------------------------------------------------------------------------/
     //  Poisson rouge qui bouge                                                            /
     //------------------------------------------------------------------------------------/
@@ -220,6 +288,13 @@ void mousePressed()
     locked = true;
     xoff = mouseX-sliderx;
    }
+   if (isMouseInsideButton == true)
+  {
+    if (mouseButton == LEFT || mouseButton == RIGHT)
+    {
+      isButtonPressed = true;
+   }
+  }
 }
 //Init Elena
 
@@ -261,6 +336,12 @@ void mouseReleased()
 {
   titlescreenclicked = true;
   locked = false;
+  if (isMouseInsideButton == true)
+  {
+    count = count + 1;
+    println("button clic count: " + count);
+  }
+  isButtonPressed = false;
 } 
 //Init Eve
 
