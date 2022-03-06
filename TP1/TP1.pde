@@ -22,6 +22,8 @@ float buttonMinY;
 float buttonMaxX;
 float buttonMaxY;
 int count;
+color[] colors = new color[6];
+int colorCount;
 
 //Sirene sourir
 boolean showimage1 = false;
@@ -68,10 +70,11 @@ void setup()
   strokeWeight(1.5);
   stroke(#2DA9A2);
   textSize(20);
+  //  Bouton lvl 
   buttonPositionX = 360;
-  buttonPositionY = 100;
-  buttonWidth = 80;
-  buttonHeight = 20;
+  buttonPositionY = 98;
+  buttonWidth = 83;
+  buttonHeight = 25;
   buttonScaleUp = 1.05f;
   buttonScaleDown = 0.95f;
   buttonMinX = buttonPositionX - (buttonWidth );
@@ -81,6 +84,12 @@ void setup()
   isButtonPressed = false;
   isMouseInsideButton = false;
   count = 0;
+  colors[0] = color(#F05D5D); 
+  colors[1] = color(#EBDA44); 
+  colors[2] = color(#84EF52); 
+  colors[3] = color(#2EC0EE);
+  colors[4] = color(#822EEE);
+  colors[5] = color(#EE2EC4);
   // Poisson rose SPRITE
   frameRate (8);
   animation = new PImage[animationFrameCount];
@@ -185,16 +194,15 @@ void draw()
     fill(45, 169, 162);
     textSize(11);
     text("HAPPINESS", 298, 170);
-    textSize(20);
-    fill(45, 169, 162);
-    text("LV", 298, 110);
-    textSize(15);
-    text("LVL UP", 395, 109);
+    textSize(22);
+    fill(45, 164, 158);
+    text("LV.", 292, 110);
     //Init Elena
     
     
     drawRoof();
     //Init Eve
+    
     
     // ---------------------------------------------------------------------/
     //  Bouton lvl                                                         /
@@ -207,31 +215,32 @@ void draw()
     }
     else
       isMouseInsideButton = false;
-  }
-  else
-    isMouseInsideButton = false;
+   }
+   else
+     isMouseInsideButton = false;
     
-    if (isButtonPressed == true)
-  {
-    fill(#A5E8FF);
-    rect(buttonPositionX, buttonPositionY, buttonWidth * buttonScaleDown, buttonHeight * buttonScaleDown);
-  }
-  else if (isMouseInsideButton == true) 
-  {
-    fill(#E1F8FF);
-    rect(buttonPositionX, buttonPositionY, buttonWidth * buttonScaleUp, buttonHeight * buttonScaleUp);
-  }
-  else 
-  {
-    fill(#BFEFFF);
-    rect(buttonPositionX, buttonPositionY, buttonWidth, buttonHeight);
-  }
-  fill(45, 169, 162);
-  textSize(15);
-  text("LVL UP", 395, 109);
-  textSize(20);
-   fill(random(255), random(255), random(255));   
-  text(count, 340, 110);
+     if (isButtonPressed == true)
+   {
+     fill(#A5E8FF);
+     rect(buttonPositionX, buttonPositionY, buttonWidth * buttonScaleDown, buttonHeight * buttonScaleDown);
+   }
+   else if (isMouseInsideButton == true) 
+   {
+     fill(#E1F8FF);
+     rect(buttonPositionX, buttonPositionY, buttonWidth * buttonScaleUp, buttonHeight * buttonScaleUp);
+   }
+   else 
+   {
+     fill(#BFEFFF);
+     rect(buttonPositionX, buttonPositionY, buttonWidth, buttonHeight);
+   }
+   textSize(30);
+   fill(colors[colorCount]);
+   text(count, 331, 106);
+   fill(45, 169, 162);
+   textSize(17);
+   text("LVL UP", 403, 109);
+    //Init Elena 
 
     
     //--------------------------------------------------------------------------------------/
@@ -294,6 +303,8 @@ void mousePressed()
     {
       isButtonPressed = true;
    }
+   colorCount++; 
+  if (colorCount>5) colorCount=0;
   }
 }
 //Init Elena
